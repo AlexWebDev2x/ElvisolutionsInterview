@@ -1,0 +1,13 @@
+{
+    "env": {
+    },
+
+    "ignore": [
+        ".git",
+        ".vscode",
+        "node_modules/**/node_modules",
+        "data/*",
+        "public/*",
+        "frontend"
+      ]    
+}
