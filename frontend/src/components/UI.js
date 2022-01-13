@@ -9,7 +9,6 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { useField } from "formik";
 import clsx from 'clsx';
-// import "dayjs/locale/en";
 import enLocale from "date-fns/locale/en-US";
 import DateFnsUtils from "@date-io/date-fns";
 
@@ -184,8 +183,6 @@ const DatePicker = ({ name, label, format = "dd/MM/yyyy", required, dynamicHelpe
         const isError = !!props.errors[name];
         const id = `component-helper-${ name }`;
         const filler = dynamicHelperText? '' : ' ';
-
-        // console.log('DatePicker:', name, props, isError);
 
         return (
             <>

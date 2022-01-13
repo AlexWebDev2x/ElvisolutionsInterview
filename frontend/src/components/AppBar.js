@@ -1,6 +1,7 @@
 import * as React from "react";
 import { AppBar, Typography } from "@material-ui/core";
 
+
 const NavBar = () => {
     return (
         <AppBar position="static" style={{ textAlign: 'center', padding: 20 }} >
@@ -17,4 +18,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default React.memo(NavBar);

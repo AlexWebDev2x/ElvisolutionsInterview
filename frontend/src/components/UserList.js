@@ -17,8 +17,6 @@ function UserList(props)
         },
         [ props.users, selected ]);
 
-    // console.log('UserList, selected:', selected, Number.parseInt(selected) > -1? props.users.find( u => u.id === selected) : undefined);
-
     return (
         <div>
 
@@ -26,7 +24,7 @@ function UserList(props)
 
                 <Route path="/" exact element={ <Users  users={ props.users } 
                                                         selected={ selected }
-                                                        onSelectionChanged={ /* (n) => { console.log('onSelectionChanged:', n); */ setSelected/* (n); } */ } 
+                                                        onSelectionChanged={ setSelected } 
                                                         onDelete={ props.onDelete } /> } />
 
                 <Route exact path="/modify" element={ <User onCreate={ props.onCreate } onModify={ props.onModify } /> } />

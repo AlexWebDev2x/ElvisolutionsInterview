@@ -6,14 +6,13 @@ import serverURI from './shared/serverURI';
 import Layout from './containers/layout';
 import UserList from './components/UserList';
 
+
 function App()
 {
     const [ users, setUsers ] = useState( [] );
 
     useEffect( () =>
         {
-            // console.log(serverURI);
-
             axios.get(serverURI, { "Content-Type": "application/json" })
                  .then( answer =>
                     {

@@ -14,7 +14,7 @@ app.use( cors() );
 app.options( '*', cors() );
 
 // Body parser, reading data from body into req.body
-app.use( bodyParser.json(      // Add simple middleware to process only requests with 'Content-Type' header set to 'application/json'
+app.use( bodyParser.json(   // Add simple middleware to process only requests with 'Content-Type' header set to 'application/json'
     {
         limit: '16kb'       // limit maximum size of incoming data
     }) );

@@ -38,9 +38,6 @@ void async function()
     // Handle globally unhandled rejections (from promises) using process event handler for 'unhandledRejection' event:
     process.on('unhandledRejection', errorHandlers.unhandledRejection(server));
 
-    // *** NOTEs about Heroku ***
-    // Heroku stores and runs our app in a container named Dyno and 
-    // sends every 24 hours the SEG_TERM signal to rerun the app to keep it in a healthy state
-    // ***
+    // Handle SIGTERM
     process.on('SIGTERM', errorHandlers.sigTerm(server));
 }();

@@ -49,8 +49,6 @@ function User({ user = {}, onCreate, onModify, ...props })
     const navigate = useNavigate();
     const params = useParams();
     
-    // console.log('User, user:', user);
-
     const { name = '', surname = '', birth_date = new Date(), email = '', password = '', phone = '', identity = '', passport_number = '' } = user;
 
     const initialValues = { name, surname, birth_date, email, password, passwordConfirmation: '', phone, identity, passport_number };
@@ -140,13 +138,10 @@ function User({ user = {}, onCreate, onModify, ...props })
                     {
                         (props) => 
                             {
-                                // console.log('renderer:', props);
-                                
                                 return (
                                     <Form>
                                         <TextFieldEx label="Enter user name" name="name" fullWidth required={ !params.id } > <AccountCircle /> </TextFieldEx>
                                         <TextFieldEx label="Enter user surname" name="surname" fullWidth required={ !params.id } > <AccountCircle /> </TextFieldEx>
-                                        {/* <TextFieldEx label="Enter user birth date" name="birth_date" fullWidth required={ !params.id } > <AccountCircle /> </TextFieldEx> */}
                                         <DatePicker label="Enter user birth date" name="birth_date" fullWidth required={ !params.id } { ...props } > <ScheduleIcon /> </DatePicker>
                                         <Email label="Enter user email" name="email" fullWidth  required={ !params.id }  />
                                         <Password label="Enter user password" name="password" fullWidth required={ !params.id }  />

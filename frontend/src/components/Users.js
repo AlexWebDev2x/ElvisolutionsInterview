@@ -87,16 +87,12 @@ function Users(props)
 
     const [ viewerOpened, setViewerOpened ] = useState( false );
 
-    // console.log('[selections]:', selections);
-
     const handleClick = (event, id) =>
         {
             const ns = {};
 
             for (let s in selections)
                 ns[s] = (s !== id)? false : !(selections[id]);
-
-            // console.log('handleClick - selections:', selections, { ...selections });
 
             props.onSelectionChanged( ns[id] ? id : "-1" );
             
@@ -105,13 +101,11 @@ function Users(props)
 
     const selectedUser = props.selected !== "-1" ? props.users.find( u => u.id === props.selected) : {};
 
-    // console.log('[Users] selectedUser:', selectedUser);
-
     const navigateToCreate = useCallback( () => navigate("/users/modify"), [ navigate ] );
     const navigateToEdit = useCallback( () => navigate(`/users/modify/${ props.selected !== "-1" ? props.selected: '' }`), [ navigate, props.selected ] );
-    const openViewer = () => setViewerOpened( true );
-    const closeViewer = () => setViewerOpened( false );
-    const redirectToEdit = () => { closeViewer(); navigateToEdit() };
+    const openViewer = useCallback( () => setViewerOpened( true ), []);
+    const closeViewer = useCallback( () => setViewerOpened( false ), []);
+    const redirectToEdit = useCallback( () => { closeViewer(); navigateToEdit() }, [closeViewer, navigateToEdit]);
     const deleteUser = useCallback( () => window.confirm(`Delete selected user?`)? props.onDelete(props.selected) : {}, [ props ]);
 
     return (
@@ -143,7 +137,7 @@ function Users(props)
                                           selected={ selections[user.id] } 
                                         >
                                     <TableCell align="left" component="th" scope="row"> { ` ${ user.name } ${ user.surname } ` } </TableCell>
-                                    <TableCell align="center"> { user.birth_date.toLocaleDateString()/* split('T')[0] */ } </TableCell>
+                                    <TableCell align="center"> { user.birth_date.toLocaleDateString() } </TableCell>
                                     <TableCell align="center"> { user.email } </TableCell>
                                     <TableCell align="center"> { user.phone } </TableCell>
                                     <TableCell align="center"> { user.identity } </TableCell>
